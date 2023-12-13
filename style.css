@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --tt-active: hsla(194, 97%, 31%,1);
+  --tt-inactive: hsl(240, 6%, 21%);
+
+  --sound-bg-active: var(--tt-active);
+  --sound-tt-active: hsl(0, 0%, 100%);
+  --sound-bg-inactive: hsl(240, 9%, 89%);
+  --sound-tt-inactive: var(--tt-inactive);
+
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  gap: 11.2rem;
+  margin: 1rem;
+}
+
+.clock {
+  font-size: 12.6rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--tt-inactive);
+  gap: 0px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.controls {
+  justify-content: center;
+  gap: 3rem;
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0px;
+  border: 0;
+  appearance: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.running .ph-play-circle,
+#timer:not(.running) section .ph-pause-circle {
+  display: none;
+}
+
+#timer.running .clock {
+  color: var(--tt-active);
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  color: var(--tt-inactive);
+  cursor: pointer;
+  font-size: 6rem;
+}
+
+.sounds {
+  gap: 3.2rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.sounds .card {
+  padding: 6.4rem 4.4rem;
+  border-radius: 2.4rem;
+  background-color: var(--sound-bg-inactive);
+  cursor: pointer;
+}
+
+.sounds .active.card {
+  background-color: var(--sound-bg-active);
+}
+
+.sounds .active button {
+  color: var(--sound-tt-active);
+}
+
+.sounds .card button {
+  font-size: 5.8rem;
+}
+
+.ph-pause-circle{
+  color: var(--tt-active)
+}
+
+@media (max-width: 914px) {
+  :root {
+    font-size: 60%;
+  }
+
+  #app {
+    display: grid;
+    place-items: center;
+    grid-template-areas:
+      "sounds sounds"
+      "timer timer";
+    gap: 4rem;
+  }
+
+  .timer {
+    grid-area: timer;
+  }
+
+  .sounds {
+    grid-area: sounds;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    font-size: 50%;
+  }
+}
